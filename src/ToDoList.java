@@ -44,6 +44,8 @@ public class ToDoList {
                 System.out.println("Task Deleted Successful");
                 break;
             case "4":
+                TaskDetail TaskDetail=new TaskDetail();
+                TaskDetail.viewTask();
                 System.out.println("Task Details Successful");
                 break;
             case "5":
