@@ -9,7 +9,6 @@ public class ToDoList {
             options();
             toDoList();
         }
-
     }
 
     static void options(){
@@ -29,7 +28,14 @@ public class ToDoList {
         String option = sc.nextLine();
         switch (option){
             case "1":
-                System.out.println("Task Created Successful");
+                TaskCreation taskCreation = new TaskCreation();
+                try {
+                    taskCreation.addTask();
+                    System.out.println("Task Created Successful");
+
+                } catch (ToDoListException e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case "2":
                 System.out.println("Task Updated Successful");

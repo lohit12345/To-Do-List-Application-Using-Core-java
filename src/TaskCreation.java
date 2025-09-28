@@ -1,19 +1,28 @@
+import java.util.Scanner;
+
 public class TaskCreation {
 
-    String taskTitle;
-    String taskDescription;
+    public void addTask() throws ToDoListException{
 
-    TaskCreation(String taskTitle,String taskDescription){
-        this.taskTitle = taskTitle;
-        this.taskDescription = taskDescription;
-    }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the task title : ");
+        String taskTitle = scanner.nextLine();
+        System.out.print("Enter the task description : ");
+        String taskDescription = scanner.nextLine();
 
-    public void addTask(){
+        if (taskTitle.trim().isEmpty()){
+            throw new ToDoListException("Task Creation Failed: Task title cannot be empty.");
+        }
+
         TaskObject taskDto = new TaskObject(taskTitle,taskDescription);
+
         ViewTask viewTask = new ViewTask();
-        viewTask.pending[0] = taskDto;
-        System.out.println("Task Created");
-        System.out.println(viewTask.pending.toString());
+        for(int i = 0; i < viewTask.pending.length; i++){
+            if(viewTask.pending[i] == null){
+                viewTask.pending[i] = taskDto;
+                break;
+            }
+        }
     }
 
 
